@@ -31,7 +31,7 @@ public class EtudiantService implements IEtudiantService{
     EquipeRepository equipeRepository;
     @Override
     public Etudiant ajouterEtudiant(Etudiant etudiant) {
-       return etudiantRepository.save(etudiant);
+        return etudiantRepository.save(etudiant);
     }
 
     @Override
@@ -64,7 +64,6 @@ public class EtudiantService implements IEtudiantService{
     public void assignEtudiantToDepartement (Integer etudiantId, Integer departementId)
     {
         Etudiant etudiant =retriveEtudiant(etudiantId);
-        // Etudiant etudiant=etudiantRepository.findById(id).orElse(null);
         Departement departement=departementRepository.findById(departementId).orElse(null);
         etudiant.setDepartement(departement);
         etudiantRepository.save(etudiant);
@@ -80,12 +79,9 @@ public class EtudiantService implements IEtudiantService{
         return etudiantRepository.save(e);
     }
 
-
-
-
     @Override
     public List<Etudiant> getEtudiantsByDepartement(Integer idDepartement){
-       // Departement d = departementRepository.findById(idDepartement).orElse(null);
+        // Departement d = departementRepository.findById(idDepartement).orElse(null);
         return etudiantRepository.findByDepartementIdDepar(idDepartement);
     }
 

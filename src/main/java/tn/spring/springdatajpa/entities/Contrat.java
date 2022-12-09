@@ -30,7 +30,6 @@ public class Contrat implements Serializable {
     @ManyToOne
     Etudiant etudiant;
 
-   // new Contrat contrat = Contrat.builder().dateDebutContrat(dateDebutContrat).build();
 
 
 }

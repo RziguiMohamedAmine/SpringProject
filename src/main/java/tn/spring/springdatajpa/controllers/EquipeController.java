@@ -13,30 +13,30 @@ import java.util.List;
 @RequestMapping("/Equipe")
 public class EquipeController {
     IEquipeService equipeService;
-    @PostMapping("/ajouterEquipe")
+    @PostMapping("/add")
     Equipe ajouterEquipe(@RequestBody Equipe equipe)
     {
         return equipeService.ajouterEquipe(equipe);
     }
 
-    @PutMapping("/updateEquipe")
+    @PutMapping("/update")
     Equipe updateEquipe(@RequestBody Equipe equipe)
     {
         return equipeService.updateEquipe(equipe);
     }
 
-    @GetMapping("/afficheAllEquipes")
-    List<Equipe> retriveAllEquipe()
+    @GetMapping("/")
+    List<Equipe> retrieveAllEquipe()
     {
         return equipeService.retriveAllEquipe();
     }
 
-    @GetMapping("/afficheEquipe/{id}")
-    Equipe retriveEquipe(@PathVariable int id)
+    @GetMapping("/find/{id}")
+    Equipe retrieveEquipe(@PathVariable int id)
     {
         return equipeService.retriveEquipe(id);
     }
-    @DeleteMapping("/deleteEquipe/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteEquipe(@PathVariable int id)
     {
         equipeService.deleteEquipe(id);

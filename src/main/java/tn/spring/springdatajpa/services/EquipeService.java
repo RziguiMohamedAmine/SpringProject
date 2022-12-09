@@ -39,15 +39,8 @@ public class EquipeService implements IEquipeService{
 
     @Override
     public void deleteEquipe(int id) {
-    equipeRepository.deleteById(id);
+        equipeRepository.deleteById(id);
     }
-
-
-
-
-
-
-
 
 
 

@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.sql.Date;
 
 @Entity
 @Getter
@@ -12,13 +12,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Departement implements Serializable {
+public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private int idDepar;
-    private String nomDepar;
+    private int idProject;
+    private String nameProject;
+    private String descriptionProject;
+    private Date deadLine;
+    private String statusProject;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
-    private Set<Etudiant> etudiants;
+    @OneToOne
+    private Equipe team;
+
+
 }

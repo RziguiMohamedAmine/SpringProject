@@ -53,7 +53,7 @@ public class ContratService implements IContratService{
     @Override
     public Contrat affectContratToEtudiant (Contrat ce,String nomE,String prenomE)
     {
-       // Etudiant etudiant=es.retriveEtudiantByName(nomE,prenomE);
+        // Etudiant etudiant=es.retriveEtudiantByName(nomE,prenomE);
         Etudiant etudiant=etudiantRepository.findByNomEAndPrenomE(nomE,prenomE);
         if(etudiant.getContrats().size()<5)
         {
@@ -62,40 +62,13 @@ public class ContratService implements IContratService{
         return contratRepository.save(ce);
     }
 
-  /*  @Override
-    public Contrat affegctContratToEtudiant (Contrat ce,String nomE,String prenomE)
-    {
-        // Etudiant etudiant=es.retriveEtudiantByName(nomE,prenomE);
-        Etudiant etudiant=etudiantRepository.findByNomEAndPrenomE(nomE,prenomE);
-        if(etudiant==null)
-        {
-            log.info("not found");
-        }
-        else if(contratRepository.findByEtudiantIdEtudiantAndArchive(etudiant.getIdEtudiant(),false).size()<=5)
-        {
 
-        }
-    }*/
-    //Rq:toujours child affecté lel parent contrat.setEtudiant()
     @Override
     public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate)
     {
-        float reglement=0;
-        long timediff=Math.abs(endDate.getTime()-startDate.getTime());
-        long daysdiff= TimeUnit.DAYS.convert(timediff,TimeUnit.DAYS);
-        long differenceInmonths = daysdiff/30;
         List<Contrat> contrats = contratRepository.findByDateFinContratBetween(startDate,endDate);
-        long chiffreAffaireEntreDeuxDates=0;
-        for (Contrat c:contrats){
-                if (c.getArchive()==false)
-                {
-                    chiffreAffaireEntreDeuxDates+=c.getMontantContrat();
-                }
-        }
 
-
-
-        return chiffreAffaireEntreDeuxDates;
+        return contrats.stream().filter(x-> !x.getArchive()).map(x->x.getMontantContrat()).reduce(0,(sum,x) -> sum +x);
     }
 
     @Override
@@ -105,10 +78,10 @@ public class ContratService implements IContratService{
         List<Contrat> lc =retriveAllContrat();
         for (Contrat c:lc)
         {
-          if(c.getDateDebutContrat().after(startDate) &&c.getDateFinContrat().before(endDate) && c.getArchive()==false)
-          {
-              i++;
-          }
+            if(c.getDateDebutContrat().after(startDate) &&c.getDateFinContrat().before(endDate) && c.getArchive()==false)
+            {
+                i++;
+            }
         }
         return i;
     }

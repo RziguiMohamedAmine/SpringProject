@@ -1,5 +1,6 @@
 package tn.spring.springdatajpa.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,5 +26,6 @@ public class Equipe implements Serializable {
     private DetailEquipe detailEquipe;
 
     @ManyToMany
+    @JsonIgnore
     private Set<Etudiant> etudiants;
 }

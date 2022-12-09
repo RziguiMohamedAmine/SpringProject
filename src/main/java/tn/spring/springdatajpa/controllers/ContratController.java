@@ -18,34 +18,34 @@ import java.util.List;
 @Tag(name = "Contrat Management")
 public class ContratController {
     IContratService contratService;
-    @PostMapping("/ajouterContrat")
+    @PostMapping("/add")
     Contrat ajouterContrat(@RequestBody Contrat contrat)
     {
-     return contratService.ajouterContrat(contrat);
+        return contratService.ajouterContrat(contrat);
     }
 
-    @PutMapping("/updateContrat")
+    @PutMapping("/update")
     Contrat updateContrat(@RequestBody Contrat contrat)
     {
         return contratService.updateContrat(contrat);
     }
 
-    @GetMapping("/afficheAllContrats")
+    @GetMapping("/")
     List<Contrat> retriveAllContrat()
     {
         return contratService.retriveAllContrat();
     }
 
     @Operation(description = "Retrieve all Contrats")
-    @GetMapping("/afficheContrat/{id}")
+    @GetMapping("/find/{id}")
     Contrat retriveContrat(@PathVariable int id)
     {
         return contratService.retriveContrat(id);
     }
-    @DeleteMapping("/deleteContrat/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteContrat(@PathVariable int id)
     {
-         contratService.deleteContrat(id);
+        contratService.deleteContrat(id);
     }
 
     @PutMapping("/affectContratToEtudiant/{nom}/{prenom}")
@@ -55,9 +55,9 @@ public class ContratController {
     }
 
     @GetMapping("/chiffreAffaire/{startDate}/{endDate}")
-    void getChiffreAffaireEntreDeuxDate(@PathVariable Date startDate,@PathVariable Date endDate)
+    float getChiffreAffaireEntreDeuxDate(@PathVariable Date startDate,@PathVariable Date endDate)
     {
-        contratService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
+        return contratService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
     }
 
 

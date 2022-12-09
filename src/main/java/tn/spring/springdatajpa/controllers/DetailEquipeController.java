@@ -12,30 +12,30 @@ import java.util.List;
 @RequestMapping("/Detail")
 public class DetailEquipeController {
     IDeatilEquipeService detailEquipeService;
-    @PostMapping("/ajouterDetail")
+    @PostMapping("/add")
     DetailEquipe ajouterDetail(@RequestBody DetailEquipe detailEquipe)
     {
         return detailEquipeService.ajouterDetail(detailEquipe);
     }
 
-    @PutMapping("/updateDetail")
+    @PutMapping("/update")
     DetailEquipe updateDetail(@RequestBody DetailEquipe detailEquipe)
     {
         return detailEquipeService.updateDetail(detailEquipe);
     }
 
-    @GetMapping("/afficheAllDetail")
-    List<DetailEquipe> retriveAllDetail()
+    @GetMapping("/")
+    List<DetailEquipe> retrieveAllDetail()
     {
         return detailEquipeService.retriveAllDetail();
     }
 
-    @GetMapping("/afficheDetail/{id}")
+    @GetMapping("/find/{id}")
     DetailEquipe retriveDetail(@PathVariable int id)
     {
         return detailEquipeService.retriveDetail(id);
     }
-    @DeleteMapping("/deleteDetail/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteDetail(@PathVariable int id)
     {
         detailEquipeService.deleteDetail(id);

@@ -18,7 +18,7 @@ public interface EtudiantRepository extends JpaRepository<Etudiant,Integer> {
     Etudiant findByNomEAndPrenomE(String nom, String prenom);
 
     @Query(value = "Select e From Etudiant e where e.departement.idDepar =?1",nativeQuery = true)
-  List<Etudiant> getEtudiantByDepartement(int idDep);
+    List<Etudiant> getEtudiantByDepartement(int idDep);
 
 
     List<Etudiant> findByDepartementIdDepar(int idDep);

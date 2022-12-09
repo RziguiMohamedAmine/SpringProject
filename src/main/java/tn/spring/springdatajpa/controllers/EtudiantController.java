@@ -15,30 +15,30 @@ import java.util.List;
 @RequestMapping("/Etudiant")
 public class EtudiantController {
     IEtudiantService etudiantService;
-    @PostMapping("/ajouterEtudiant")
+    @PostMapping("/add")
     Etudiant ajouterEtudiant(@RequestBody Etudiant etudiant)
     {
         return etudiantService.ajouterEtudiant(etudiant);
     }
 
-    @PutMapping("/updateEtudiant")
+    @PutMapping("/update")
     Etudiant updateEtudiant(@RequestBody Etudiant etudiant)
     {
         return etudiantService.updateEtudiant(etudiant);
     }
 
-    @GetMapping("/afficheAllEtudiants")
+    @GetMapping("/")
     List<Etudiant> retriveAllEtudiant()
     {
         return etudiantService.retriveAllEtudiant();
     }
 
-    @GetMapping("/afficheEtudiant/{id}")
-    Etudiant retriveEtudiant(@PathVariable int id)
+    @GetMapping("/find/{id}")
+    Etudiant retrieveEtudiant(@PathVariable int id)
     {
         return etudiantService.retriveEtudiant(id);
     }
-    @DeleteMapping("/deleteEtudiant/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteEtudiant(@PathVariable int id)
     {
         etudiantService.deleteEtudiant(id);
@@ -48,7 +48,7 @@ public class EtudiantController {
     @PutMapping("/assignEtudiantToDepartement/{etudiantId}/{departementId}")
     void assignEtudiantToDepartement (@PathVariable Integer etudiantId,@PathVariable Integer departementId)
     {
-       etudiantService.assignEtudiantToDepartement(etudiantId,departementId);
+        etudiantService.assignEtudiantToDepartement(etudiantId,departementId);
     }
 
     @PutMapping ("/addAndassignEtudiant/{idContrat}/{idEquipe}")

@@ -15,36 +15,36 @@ import java.util.Set;
 public class DepartementController {
     IDepartementService departementService;
 
-    @PostMapping("/ajouterDepartement")
+    @PostMapping("/add")
     Departement ajouterDepartement(@RequestBody Departement departement)
     {
         return departementService.ajouterDepartement(departement);
     }
 
-    @PutMapping("/updateDepartement")
+    @PutMapping("/update")
     Departement updateDepartement(@RequestBody Departement departement)
     {
         return departementService.updateDepartement(departement);
     }
 
-    @GetMapping("/afficheAllDepartement")
+    @GetMapping("/")
     List<Departement> retriveAllDepartement()
     {
         return departementService.retriveAllDepartement();
     }
 
-    @GetMapping("/afficheDepartement/{id}")
-    Departement retriveDepartment(@PathVariable int id)
+    @GetMapping("/find/{id}")
+    Departement retrieveDepartment(@PathVariable int id)
     {
         return departementService.retriveDepartement(id);
     }
-    @DeleteMapping("/deleteDepartement/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteDepartement(@PathVariable int id)
     {
         departementService.deleteDepartement(id);
     }
 
-    @GetMapping("/getEtudiantsByDepartemen/{idDepartement}")
+    @GetMapping("/getEtudiantsByDepartement/{idDepartement}")
     List<Etudiant> getEtudiantsByDepartement(@PathVariable Integer idDepartement)
     {
         return departementService.getEtudiantsByDepartement(idDepartement);

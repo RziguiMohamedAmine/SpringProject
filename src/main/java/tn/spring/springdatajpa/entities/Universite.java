@@ -20,5 +20,6 @@ public class Universite implements Serializable {
     private String nomUniversite;
 
     @OneToMany(cascade = CascadeType.ALL)
+
     private Set<Departement> departements;
 }

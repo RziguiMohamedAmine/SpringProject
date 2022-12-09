@@ -15,30 +15,30 @@ import java.util.List;
 @RequestMapping("/Universite")
 public class UniversiteController {
     IUniversiteService universiteService;
-    @PostMapping("/ajouterUniversite")
+    @PostMapping("/add")
     Universite ajouterUniversite(@RequestBody Universite universite)
     {
         return universiteService.ajouterUniversite(universite);
     }
 
-    @PutMapping("/updateUniversite")
+    @PutMapping("/update")
     Universite updateUniversite(@RequestBody Universite Universite)
     {
         return universiteService.updateUniversite(Universite);
     }
 
-    @GetMapping("/afficheAllUniversites")
-    List<Universite> retriveAllUniversite()
+    @GetMapping("/")
+    List<Universite> retrieveAllUniversite()
     {
         return universiteService.retriveAllUniversite();
     }
 
-    @GetMapping("/afficheUniversite/{id}")
-    Universite retriveUniversite(@PathVariable int id)
+    @GetMapping("/find/{id}")
+    Universite retrieveUniversite(@PathVariable int id)
     {
         return universiteService.retriveUniversite(id);
     }
-    @DeleteMapping("/deleteUniversite/{id}")
+    @DeleteMapping("/delete/{id}")
     void deleteUniversite(@PathVariable int id)
     {
         universiteService.deleteUniversite(id);
